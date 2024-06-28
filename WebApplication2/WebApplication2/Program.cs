@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
-
+using WebApplication2.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IDbService, DbService>();
 builder.Services.AddDbContext<DataContext>(options => 
     options.UseSqlServer("Name=ConnectionStrings:Default"));
 var app = builder.Build();
